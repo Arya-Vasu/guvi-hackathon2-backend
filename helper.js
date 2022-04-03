@@ -7,6 +7,7 @@ export {
   addNewTheatre,
   getMovieById,
   createUser,
+  getUserByName,
 };
 
 async function getAllMovies() {
@@ -52,3 +53,11 @@ async function createUser(newUser) {
     .collection("Customers")
     .insertOne(newUser);
 }
+
+async function getUserByName(username) {
+  return await client
+    .db("Ticket_Booking")
+    .collection("Customers")
+    .findOne({ username: username });
+}
+
