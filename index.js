@@ -1,7 +1,8 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { moviesRouter } from "./routes/apis.js";
+import { moviesRouter } from "./routes/movies.js";
+import {theatresRouter} from "./routes/theatres.js";
 
 dotenv.config();
 
@@ -29,5 +30,6 @@ app.get("/", function (req, res) {
 });
 
 app.use("/", moviesRouter);
+app.use("/", theatresRouter);
 
 app.listen(PORT, () => console.log(`Server started in ${PORT}`));

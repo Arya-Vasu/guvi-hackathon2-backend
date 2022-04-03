@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllMovies, getMovieById, getAllTheatres, addNewMovie, addNewTheatre } from "../helper.js";
+import { getAllMovies, getMovieById, addNewMovie } from "../helper.js";
 
 const router = express.Router();
 
@@ -14,20 +14,9 @@ router.get("/movie/:id", async function (req, res) {
   res.send(result);
 });
 
-router.get("/theatres", async function (req, res) {
-  const result = await getAllTheatres();
-  res.send(result);
-});
-
 router.post("/add-movies", async function (req, res) {
   const data = req.body;
   const result = await addNewMovie(data);
-  res.send(result);
-});
-
-router.post("/add-theatres", async function (req, res) {
-  const data = req.body;
-  const result = await addNewTheatre(data);
   res.send(result);
 });
 
