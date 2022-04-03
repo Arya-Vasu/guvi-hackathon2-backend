@@ -1,0 +1,26 @@
+[
+  {
+    "movie_id": "100",
+    "movie_name": "Attack Part 1",
+    "movie_poster": "https://m.media-amazon.com/images/M/MV5BMzQxMGMzM2YtMWEwNi00ZGRkLWI1ZmMtMWJlZGE4NmIyMzBlXkEyXkFqcGdeQXVyOTE2NDU1NDM@._V1_.jpg",
+    "rating": 7.1
+  },
+  {
+    "movie_id": "101",
+    "movie_name": "The Kashmir Files",
+    "movie_poster": "https://i2.cinestaan.com/image-bank/1500-1500/198001-199000/198683.jpg",
+    "rating": 8.1
+  },
+  {
+    "movie_id": "102",
+    "movie_name": "RRR: Rise Roar Revolt",
+    "movie_poster": "https://dmerharyana.org/wp-content/uploads/2022/03/RRR-collection.png",
+    "rating": 9.1
+  },
+  {
+    "movie_id": "103",
+    "movie_name": "Morbius",
+    "movie_poster": "https://m.media-amazon.com/images/M/MV5BYjlhNTA3Y2ItYjhiYi00NTBiLTg5MDMtZDJjMDZjNzVjNjJmXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+    "rating": 4.9
+  }
+]
