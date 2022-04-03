@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllMovies, getMovieById, addNewMovie } from "../helper.js";
+import { getAllMovies, getMovieById, addNewMovie, removeMoviefromTheatre, deleteMovieByName } from "../helper.js";
 
 const router = express.Router();
 
@@ -20,4 +20,12 @@ router.post("/add-movies", async function (req, res) {
   res.send(result);
 });
 
+router.delete("/remove-movie", async function (req, res) {
+  const movieName = req.body;
+  const result = await deleteMovieByName(movieName);
+  const result2 = await removeMoviefromTheatre(movieName);
+  res.send(result, result2);
+});
+
 export const moviesRouter = router;
+

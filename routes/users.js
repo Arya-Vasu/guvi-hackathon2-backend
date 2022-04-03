@@ -11,14 +11,26 @@ async function genPassword(password) {
 }
 
 router.post("/sign-up", async function (req, res) {
-  const { username, password } = req.body;
+  const { username, password, admin } = req.body;
   const hashedPassword = await genPassword(password);
-  const newUser = {
-    username: username,
-    password: hashedPassword,
-  };
-  const result = await createUser(newUser);
-  res.send(result);
+  if (admin == "Y") {
+    const newUser = {
+      username: username,
+      password: hashedPassword,
+      admin: true
+    };
+    const result = await createUser(newUser);
+    res.send(result);
+  }
+  else {
+    const newUser = {
+      username: username,
+      password: hashedPassword
+    };
+    const result = await createUser(newUser);
+    res.send(result);
+  }
+  
 });
 
 router.use("/sign-in", async function (req, res) {
@@ -30,11 +42,17 @@ router.use("/sign-in", async function (req, res) {
   else {
     const actualPassword = sameUser.password;
     const isPasswordCorrect = await bcrypt.compare(password, actualPassword);
-    if (isPasswordCorrect) {
-      res.send({isPasswordCorrect});
-    }
-    else {
+    if (!isPasswordCorrect) {
       res.send("Invalid Credentials!");
+    }
+    else{
+      const isAdmin = sameUser.admin;
+      if (!isAdmin) {
+        res.send({isPasswordCorrect});
+      }
+      else {
+      res.send({isPasswordCorrect, isAdmin});
+      }
     }
   }
 });

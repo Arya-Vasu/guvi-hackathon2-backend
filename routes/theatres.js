@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllTheatres, addNewTheatre } from "../helper.js";
+import { getAllTheatres, addNewTheatre, modifyTheatre } from "../helper.js";
 
 const router = express.Router();
 
@@ -14,4 +14,10 @@ router.post("/add-theatres", async function (req, res) {
   res.send(result);
 });
 
+router.put("/reduce-seats", async function (req, res) {
+  const { theatre_name, movie, show_time, nums } = req.body;
+  const modifiedTheatre = await modifyTheatre(theatre_name, movie, show_time, nums);
+});
+
 export const theatresRouter = router;
+

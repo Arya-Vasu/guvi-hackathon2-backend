@@ -8,6 +8,9 @@ export {
   getMovieById,
   createUser,
   getUserByName,
+  removeMoviefromTheatre,
+  deleteMovieByName,
+  modifyTheatre,
 };
 
 async function getAllMovies() {
@@ -61,3 +64,35 @@ async function getUserByName(username) {
     .findOne({ username: username });
 }
 
+
+async function removeMoviefromTheatre(movieName) {
+  return await client
+    .db("Ticket_Booking")
+    .collection("Theatres")
+    .deleteMany({ movie: movieName });
+}
+
+async function deleteMovieByName(movieName) {
+  return await client
+    .db("Ticket_Booking")
+    .collection("Movies")
+    .deleteOne({ name: movieName });
+}
+
+async function modifyTheatre(theatre_name, movie, show_time, nums) {
+  return await client
+    .db("Ticket_Booking")
+    .collection("Theatres")
+    .UpdateOne(
+      {
+        theatre_name: theatre_name,
+        movie: movie,
+        show_time: show_time,
+      },
+      {
+        seats_available: {
+          $set: nums,
+        },
+      }
+    );
+}
