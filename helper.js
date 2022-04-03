@@ -1,11 +1,12 @@
 import { client } from "./index.js";
 
 export {
-    getAllMovies,
-    getAllTheatres,
-    addNewMovie,
-    addNewTheatre,
-    getMovieById,
+  getAllMovies,
+  getAllTheatres,
+  addNewMovie,
+  addNewTheatre,
+  getMovieById,
+  createUser,
 };
 
 async function getAllMovies() {
@@ -43,4 +44,11 @@ async function getMovieById(id) {
     .db("Ticket_Booking")
     .collection("Movies")
     .findOne({ id: id });
+}
+
+async function createUser(newUser) {
+  return await client
+    .db("Ticket_Booking")
+    .collection("Customers")
+    .insertOne(newUser);
 }
